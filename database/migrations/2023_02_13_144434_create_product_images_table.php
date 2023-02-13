@@ -23,7 +23,7 @@ class CreateProductImagesTable extends Migration
 
         Schema::table('product_images', function (Blueprint $table) {
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('image_id')->references('id')->on('images');
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
         });
     }
 
