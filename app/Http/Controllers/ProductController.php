@@ -17,7 +17,10 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(10);
-        return response()->json($products);
+        return response()->json([
+            "status" => "success",
+            "data" => $products,
+        ]);
     }
 
     /**
@@ -34,7 +37,11 @@ class ProductController extends Controller
         ]);
 
         $product = Product::create($request->all());
-        return response()->json($product);
+        return response()->json([
+            "status" => "success",
+            "data" => $product,
+            "message" => "Product created successfully"
+        ]);
     }
 
     /**
