@@ -114,6 +114,7 @@ Add a new product
   `POST`
 
 * **Data Body**
+  **Required:**
 
   `name=[string]`
   
@@ -165,6 +166,7 @@ Edit a product by id
   `id:[integer]`
 
 * **Data Body**
+  **Required:**
 
   `name=[string]`
 
@@ -248,6 +250,238 @@ Delete a product by id
     }
     ```
 
+# Category
+
+## **Show All Category**
+Show All Categories
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/categories/_
+
+* **Method**
+
+  `GET`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "current_page": 1,
+            "data": [
+                {
+                    "id": 1,
+                    "name": "Handphone",
+                    "enable": true,
+                    "created_at": "2023-02-13T17:00:57.000000Z",
+                    "updated_at": "2023-02-13T17:00:57.000000Z"
+                },
+                {
+                    "id": 2,
+                    "name": "Book",
+                    "enable": true,
+                    "created_at": "2023-02-13T17:00:57.000000Z",
+                    "updated_at": "2023-02-13T17:00:57.000000Z"
+                }
+            ],
+            "first_page_url": "http://127.0.0.1:8000/api/categories?page=1",
+            "from": 1,
+            "last_page": 1,
+            "last_page_url": "http://127.0.0.1:8000/api/categories?page=1",
+            "links": [
+                {
+                    "url": null,
+                    "label": "&laquo; Previous",
+                    "active": false
+                },
+                {
+                    "url": "http://127.0.0.1:8000/api/categories?page=1",
+                    "label": "1",
+                    "active": true
+                },
+                {
+                    "url": null,
+                    "label": "Next &raquo;",
+                    "active": false
+                }
+            ],
+            "next_page_url": null,
+            "path": "http://127.0.0.1:8000/api/categories",
+            "per_page": 10,
+            "prev_page_url": null,
+            "to": 2,
+            "total": 2
+        }
+    }
+
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error"
+    }
+    ```
+ 
+
+## **Create a New Category**
+Add a new category
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/categories/_
+
+* **Method**
+
+  `POST`
+
+* **Data Body**
+  **Required:**
+
+  `name=[string]`
+  
+  `enable=[boolean]`
+
+* **Success Response:**
+  * **Code:** 201
+  * **Content:** 
+    ```javascript
+    {
+      "status": "success",
+      "data": {
+          "name": "Laptop",
+          "enable": "true",
+          "updated_at": "2023-02-13T22:28:26.000000Z",
+          "created_at": "2023-02-13T22:28:26.000000Z",
+          "id": 3
+      },
+      "message": "Category created successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 500
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "There was some internal error, please check again the API"
+    }
+    ```
+
+## **Update Product by Id** 
+Edit a product by id
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/categories/:id_
+
+* **Method**
+
+    `PUT`
+
+* **URL Params**
+  **Required:**
+
+  `id:[integer]`
+
+* **Data Body**
+  **Required:**
+
+  `name=[string]`
+
+  `enable=[boolean]`
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+      "status": "success",
+      "data": {
+          "id": 4,
+          "name": "Laptop",
+          "enable": false,
+          "created_at": "2023-02-13T22:29:30.000000Z",
+          "updated_at": "2023-02-13T22:29:30.000000Z"
+      },
+      "message": "Category updated successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 422
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "The name field is required."
+    }
+    ```
+
+
+## **Delete category by Id**
+Delete a category by id 
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/categories/:id_
+
+* **Method**
+
+  `DELETE`
+
+* **URL Params**
+  **Required:**
+  
+  `id=[integer]`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "id": 4,
+            "name": "Laptop",
+            "enable": false,
+            "created_at": "2023-02-13T22:29:30.000000Z",
+            "updated_at": "2023-02-13T22:29:30.000000Z"
+        },
+        "message": "Category deleted successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+      "status": "error" 
+    }
+    ```
 
 
 

@@ -40,6 +40,15 @@ class Handler extends ExceptionHandler
         });
 
         $this->renderable(function (Throwable $e, $request) {
+            if ($e instanceof \Error) {
+                return response()->json(
+                    [
+                        'status' => "error",
+                        'message' => "There was some internal error, please check again the API",
+                    ],
+                    500
+                );
+            }
             if ($request->is('api/*')) {
                 return response()->json([
                     'status' => "error"
