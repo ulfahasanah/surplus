@@ -47,11 +47,23 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'enable' => 'required',
+        ]);
+
+        $category->update($request->all());
+
+        return response()->json([
+            "status" => "success",
+            "data" => $category,
+            "message" => "Category updated successfully"
+        ]);
     }
 
     /**
