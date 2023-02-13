@@ -31,41 +31,42 @@ class ProductController extends Controller
             'description' => 'required',
         ]);
 
-        $products = Product::create($request->all());
-        return response()->json($products);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $product = Product::create($request->all());
+        return response()->json($product);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        $product->update($request->all());
+
+        return response()->json([
+            "status" => "success",
+            "data" => $product,
+            "message" => "Product updated successfully"
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        
     }
 }
