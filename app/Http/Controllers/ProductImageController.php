@@ -41,14 +41,17 @@ class ProductImageController extends Controller
      */
     public function update(ProductImageRequest $request,  ProductImage $productImage)
     {
-        //
+        $productImage->update($request->all());
+        return response()->json([
+            "status" => "success",
+            "data" => $productImage,
+            "message" => "Product Image updated successfully"
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {

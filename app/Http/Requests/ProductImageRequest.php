@@ -27,13 +27,13 @@ class ProductImageRequest extends FormRequest
             'product_id' => [
                 'required', 
                 Rule::exists('products', 'id'),
-                Rule::unique('image_products')->where('image_id', $this->image_id)
+                Rule::unique('product_images')->where('image_id', $this->image_id)
                     ->where('product_id', $this->product_id)
             ],
             'image_id' => [
                 'required', 
                 Rule::exists('images', 'id'),
-                Rule::unique('image_products')->where('image_id', $this->image_id)
+                Rule::unique('product_images')->where('image_id', $this->image_id)
                     ->where('product_id', $this->product_id)
             ]
         ];
