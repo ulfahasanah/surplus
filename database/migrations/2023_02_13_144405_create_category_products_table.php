@@ -22,7 +22,7 @@ class CreateCategoryProductsTable extends Migration
 
 
         Schema::table('category_products', function (Blueprint $table) {
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
