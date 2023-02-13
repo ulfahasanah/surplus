@@ -722,6 +722,7 @@ Delete a category product by id
     }
     ```
 
+# Images
 ## **Show All Image**
 Show All Images
 
@@ -961,3 +962,242 @@ Delete image by id
     }
     ```
 
+# Product Image
+
+## **Show All Product Images**
+Show All Product Images
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/product_image/_
+
+* **Method**
+
+  `GET`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+      "status": "success",
+      "data": {
+          "current_page": 1,
+          "data": [
+              {
+                  "id": 2,
+                  "product_id": 2,
+                  "image_id": 2,
+                  "created_at": "2023-02-13T17:00:57.000000Z",
+                  "updated_at": "2023-02-13T17:00:57.000000Z",
+                  "image": {
+                      "id": 2,
+                      "name": "The Alchemist",
+                      "file": "https://www.booksbeyond.co.id/image/cache/catalog/1632111032-550x550w.png.webp",
+                      "enable": true,
+                      "created_at": "2023-02-13T17:00:57.000000Z",
+                      "updated_at": "2023-02-13T17:00:57.000000Z"
+                  },
+                  "product": {
+                      "id": 2,
+                      "name": "The Alchemist",
+                      "description": "Paulo Coelho's masterpiece tells the mystical story of Santiago, an Andalusian shepherd boy who yearns to travel in search of a worldly treasure.",
+                      "created_at": "2023-02-13T17:00:57.000000Z",
+                      "updated_at": "2023-02-13T17:00:57.000000Z"
+                  }
+              }
+          ],
+          "first_page_url": "http://127.0.0.1:8000/api/product_image?page=1",
+          "from": 1,
+          "last_page": 1,
+          "last_page_url": "http://127.0.0.1:8000/api/product_image?page=1",
+          "links": [
+              {
+                  "url": null,
+                  "label": "&laquo; Previous",
+                  "active": false
+              },
+              {
+                  "url": "http://127.0.0.1:8000/api/product_image?page=1",
+                  "label": "1",
+                  "active": true
+              },
+              {
+                  "url": null,
+                  "label": "Next &raquo;",
+                  "active": false
+              }
+          ],
+          "next_page_url": null,
+          "path": "http://127.0.0.1:8000/api/product_image",
+          "per_page": 10,
+          "prev_page_url": null,
+          "to": 1,
+          "total": 1
+      }
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error"
+    }
+    ```
+ 
+
+## **Create a New Product Image**
+Add a new Product Image
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/product_image/_
+
+* **Method**
+
+  `POST`
+
+* **Data Body**
+  **Required:**
+
+  `product_id=[integer]`
+  
+  `image_id=[integer]`
+
+* **Success Response:**
+  * **Code:** 201
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "product_id": 2,
+            "image_id": 1,
+            "updated_at": "2023-02-13T23:08:31.000000Z",
+            "created_at": "2023-02-13T23:08:31.000000Z",
+            "id": 3
+        },
+        "message": "Product Image created successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 500
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "The selected product id is invalid."
+    }
+    ```
+
+## **Update Product Image by Id** 
+Edit a product image by id
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/product_image/:id_
+
+* **Method**
+
+    `PUT`
+
+* **URL Params**
+  **Required:**
+
+  `id:[integer]`
+
+* **Data Body**
+  **Required:**
+
+  `product_id=[integer]`
+
+  `image_id=[integer]`
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+      "status": "success",
+      "data": {
+          "id": 3,
+          "product_id": 3,
+          "image_id": 1,
+          "created_at": "2023-02-13T23:08:31.000000Z",
+          "updated_at": "2023-02-13T23:11:14.000000Z"
+      },
+      "message": "Product Image updated successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 422
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "The product id has already been taken."
+    }
+    ```
+
+
+## **Delete product image by Id**
+Delete product image by id 
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/product_image/:id_
+
+* **Method**
+
+  `DELETE`
+
+* **URL Params**
+  **Required:**
+  
+  `id=[integer]`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "id": 3,
+            "product_id": 3,
+            "image_id": 1,
+            "created_at": "2023-02-13T23:08:31.000000Z",
+            "updated_at": "2023-02-13T23:11:14.000000Z"
+        },
+        "message": "Product Image deleted successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+      "status": "error" 
+    }
+    ```

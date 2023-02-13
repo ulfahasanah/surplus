@@ -53,7 +53,7 @@ class ProductImageController extends Controller
      * Remove the specified resource from storage.
      *
      */
-    public function destroy(ProductImageRequest $productImage)
+    public function destroy(ProductImage $productImage)
     {
         $productImage->delete();
         return response()->json([
