@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryProductRequest;
 use App\Models\CategoryProduct;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Validator;
 
 class CategoryProductController extends Controller
 {
