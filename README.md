@@ -722,6 +722,242 @@ Delete a category product by id
     }
     ```
 
+## **Show All Image**
+Show All Images
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/images/_
+
+* **Method**
+
+  `GET`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+   {
+      "status": "success",
+      "data": {
+          "current_page": 1,
+          "data": [
+              {
+                  "id": 1,
+                  "name": "S23 Ultra",
+                  "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
+                  "enable": true,
+                  "created_at": "2023-02-13T17:00:57.000000Z",
+                  "updated_at": "2023-02-13T17:00:57.000000Z"
+              },
+              {
+                  "id": 2,
+                  "name": "The Alchemist",
+                  "file": "https://www.booksbeyond.co.id/image/cache/catalog/1632111032-550x550w.png.webp",
+                  "enable": true,
+                  "created_at": "2023-02-13T17:00:57.000000Z",
+                  "updated_at": "2023-02-13T17:00:57.000000Z"
+              }
+          ],
+          "first_page_url": "http://127.0.0.1:8000/api/images?page=1",
+          "from": 1,
+          "last_page": 1,
+          "last_page_url": "http://127.0.0.1:8000/api/images?page=1",
+          "links": [
+              {
+                  "url": null,
+                  "label": "&laquo; Previous",
+                  "active": false
+              },
+              {
+                  "url": "http://127.0.0.1:8000/api/images?page=1",
+                  "label": "1",
+                  "active": true
+              },
+              {
+                  "url": null,
+                  "label": "Next &raquo;",
+                  "active": false
+              }
+          ],
+          "next_page_url": null,
+          "path": "http://127.0.0.1:8000/api/images",
+          "per_page": 10,
+          "prev_page_url": null,
+          "to": 2,
+          "total": 2
+      }
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error"
+    }
+    ```
+ 
+
+## **Create a New Image**
+Add a new images
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/images/_
+
+* **Method**
+
+  `POST`
+
+* **Data Body**
+  **Required:**
+
+  `name=[string]`
+  
+  `file=[string]`
+
+  `enable=[boolean]`
+
+* **Success Response:**
+  * **Code:** 201
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "name": "Laptop",
+            "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
+            "enable": true,
+            "updated_at": "2023-02-13T22:52:20.000000Z",
+            "created_at": "2023-02-13T22:52:20.000000Z",
+            "id": 3
+        },
+        "message": "Image created successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 422
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "The name field is required."
+    }
+    ```
+
+## **Update Image by Id** 
+Edit image by id
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/images/:id_
+
+* **Method**
+
+    `PUT`
+
+* **URL Params**
+  **Required:**
+
+  `id:[integer]`
+
+* **Data Body**
+  **Required:**
+
+  `name=[string]`
+  
+  `file=[string]`
+
+  `enable=[boolean]`
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "id": 3,
+            "name": "Macbook",
+            "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
+            "enable": true,
+            "created_at": "2023-02-13T22:52:20.000000Z",
+            "updated_at": "2023-02-13T22:56:20.000000Z"
+        },
+        "message": "Image updated successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 422
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "The file field is required."
+    }
+    ```
 
 
+## **Delete image by Id**
+Delete image by id 
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/images/:id_
+
+* **Method**
+
+  `DELETE`
+
+* **URL Params**
+  **Required:**
+  
+  `id=[integer]`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+      "status": "success",
+      "data": {
+          "id": 3,
+          "name": "Macbook",
+          "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
+          "enable": true,
+          "created_at": "2023-02-13T22:52:20.000000Z",
+          "updated_at": "2023-02-13T22:56:20.000000Z"
+      },
+      "message": "Image deleted successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+      "status": "error" 
+    }
+    ```
 
