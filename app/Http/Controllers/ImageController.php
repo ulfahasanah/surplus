@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Image;
+use App\Http\Requests\ImageRequest;
 
 class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -24,17 +24,9 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'file' => 'required',
-            'enable' => 'required'
-        ]);
-
         $image = Image::create($request->all());
         return response()->json([
             "status" => "success",
@@ -46,18 +38,9 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function update(ImageRequest $request, Image $image)
     {
-        $request->validate([
-            'name' => 'required',
-            'file' => 'required',
-            'enable' => 'required'
-        ]);
-
         $image->update($request->all());
 
         return response()->json([
@@ -70,8 +53,6 @@ class ImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Image $image)
     {

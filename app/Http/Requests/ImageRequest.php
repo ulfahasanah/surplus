@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProductRequest extends FormRequest
+class ImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'required',
+            'file' => 'required',
+            'enable' => 'required'
         ];
     }
 
