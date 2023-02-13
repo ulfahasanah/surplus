@@ -29,7 +29,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'enable' => 'required',
+        ]);
+
+        $category = Category::create($request->all());
+        return response()->json([
+            "status" => "success",
+            "data" => $category,
+            "message" => "Category created successfully"
+        ]);
     }
 
     /**
