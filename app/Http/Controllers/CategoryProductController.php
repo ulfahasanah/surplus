@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryProductRequest;
 use App\Models\CategoryProduct;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -12,7 +13,6 @@ class CategoryProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -26,46 +26,29 @@ class CategoryProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryProductRequest $request)
     {
-        $validator = Validator::make($request->all(),[
-            'product_id' => [
-                'required', 
-                Rule::exists('products', 'id')
-        ],
-            'category_id' => [
-                'required', 
-                Rule::exists('categories', 'id')
-        ]
+        $categoryProduct = CategoryProduct::create($request->all());
+        return response()->json([
+            "status" => "success",
+            "data" => $categoryProduct,
+            "message" => "Category Product created successfully"
         ]);
-        if (!$validator->fails()) {
-            $categoryProduct = CategoryProduct::create($request->all());
-            return response()->json([
-                "status" => "success",
-                "data" => $categoryProduct,
-                "message" => "Category Product created successfully"
-            ]);
-        } else {
-            return response()->json([
-                "status" => "error",
-                "data" => $validator->errors()
-            ]);
-        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryProductRequest $request, CategoryProduct $categoryProduct)
     {
-        //
+        $categoryProduct->update($request->all());
+        return response()->json([
+            "status" => "success",
+            "data" => $categoryProduct,
+            "message" => "Category Product updated successfully"
+        ]);
     }
 
     /**
