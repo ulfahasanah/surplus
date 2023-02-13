@@ -823,7 +823,7 @@ Add a new images
 
   `name=[string]`
   
-  `file=[string]`
+  `file=[file]`
 
   `enable=[boolean]`
 
@@ -831,15 +831,12 @@ Add a new images
   * **Code:** 201
   * **Content:** 
     ```javascript
-    {
+   {
         "status": "success",
         "data": {
-            "name": "Laptop",
-            "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
-            "enable": true,
-            "updated_at": "2023-02-13T22:52:20.000000Z",
-            "created_at": "2023-02-13T22:52:20.000000Z",
-            "id": 3
+            "name": "image",
+            "file": "image_1676349995.png",
+            "enable": "true"
         },
         "message": "Image created successfully"
     }
@@ -853,7 +850,7 @@ Add a new images
     ```javascript
     {
         "status": "error",
-        "message": "The name field is required."
+        "message": "The file must not be greater than 500 kilobytes."
     }
     ```
 
@@ -866,7 +863,7 @@ Edit image by id
 
 * **Method**
 
-    `PUT`
+    `POST`
 
 * **URL Params**
   **Required:**
@@ -878,9 +875,11 @@ Edit image by id
 
   `name=[string]`
   
-  `file=[string]`
+  `file=[file]`
 
   `enable=[boolean]`
+
+  `_method=PUT`
 
 * **Success Response:**
   * **Code:** 200
@@ -889,12 +888,9 @@ Edit image by id
     {
         "status": "success",
         "data": {
-            "id": 3,
-            "name": "Macbook",
-            "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
-            "enable": true,
-            "created_at": "2023-02-13T22:52:20.000000Z",
-            "updated_at": "2023-02-13T22:56:20.000000Z"
+            "name": "image name",
+            "file": "image_1676350949.jpg",
+            "enable": "true"
         },
         "message": "Image updated successfully"
     }

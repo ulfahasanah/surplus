@@ -27,10 +27,19 @@ class ImageController extends Controller
      */
     public function store(ImageRequest $request)
     {
+        $file = $request->file('file');
+        $imageName =  'image' . '_' . time() . '.' . $file->getClientOriginalExtension();
+        $documentPath = public_path('/image');
+        $file->move($documentPath, $imageName);
+        $data = [
+            'name' => $request->name,
+            'file' => $imageName,
+            'enable' => $request->enable
+        ];
         $image = Image::create($request->all());
         return response()->json([
             "status" => "success",
-            "data" => $image,
+            "data" => $data,
             "message" => "Image created successfully"
         ]);
     }
@@ -41,13 +50,21 @@ class ImageController extends Controller
      */
     public function update(ImageRequest $request, Image $image)
     {
-        $image->update($request->all());
-
+        $file = $request->file('file');
+        $imageName =  'image' . '_' . time() . '.' . $file->getClientOriginalExtension();
+        $documentPath = public_path('/image');
+        $file->move($documentPath, $imageName);
+        $data = [
+            'name' => $request->name,
+            'file' => $imageName,
+            'enable' => $request->enable
+        ];
+        $image->update($data);
         return response()->json([
             "status" => "success",
-            "data" => $image,
+            "data" => $data,
             "message" => "Image updated successfully"
-        ], 201);
+        ]);
     }
 
     /**
