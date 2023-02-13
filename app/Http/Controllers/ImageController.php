@@ -47,7 +47,7 @@ class ImageController extends Controller
             "status" => "success",
             "data" => $image,
             "message" => "Image updated successfully"
-        ]);
+        ], 201);
     }
 
     /**

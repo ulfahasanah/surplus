@@ -32,7 +32,7 @@ class ProductController extends Controller
             "status" => "success",
             "data" => $product,
             "message" => "Product created successfully"
-        ]);
+        ], 201);
     }
 
     /**

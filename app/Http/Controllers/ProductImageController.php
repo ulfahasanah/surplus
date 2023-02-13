@@ -32,7 +32,7 @@ class ProductImageController extends Controller
             "status" => "success",
             "data" => $productImage,
             "message" => "Product Image created successfully"
-        ]);
+        ], 201);
     }
 
     /**

@@ -32,7 +32,7 @@ class CategoryController extends Controller
             "status" => "success",
             "data" => $category,
             "message" => "Category created successfully"
-        ]);
+        ], 201);
     }
 
     /**
