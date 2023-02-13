@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CategoryProduct;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryProductController extends Controller
 {
@@ -29,7 +31,29 @@ class CategoryProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'product_id' => [
+                'required', 
+                Rule::exists('products', 'id')
+        ],
+            'category_id' => [
+                'required', 
+                Rule::exists('categories', 'id')
+        ]
+        ]);
+        if (!$validator->fails()) {
+            $categoryProduct = CategoryProduct::create($request->all());
+            return response()->json([
+                "status" => "success",
+                "data" => $categoryProduct,
+                "message" => "Category Product created successfully"
+            ]);
+        } else {
+            return response()->json([
+                "status" => "error",
+                "data" => $validator->errors()
+            ]);
+        }
     }
 
     /**
