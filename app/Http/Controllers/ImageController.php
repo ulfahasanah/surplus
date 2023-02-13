@@ -29,7 +29,18 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-     
+        $request->validate([
+            'name' => 'required',
+            'file' => 'required',
+            'enable' => 'required'
+        ]);
+
+        $image = Image::create($request->all());
+        return response()->json([
+            "status" => "success",
+            "data" => $image,
+            "message" => "Image created successfully"
+        ]);
     }
 
     /**
