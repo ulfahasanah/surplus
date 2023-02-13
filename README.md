@@ -742,57 +742,57 @@ Show All Images
   * **Code:** 200
   * **Content:** 
     ```javascript
-   {
-      "status": "success",
-      "data": {
-          "current_page": 1,
-          "data": [
-              {
-                  "id": 1,
-                  "name": "S23 Ultra",
-                  "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
-                  "enable": true,
-                  "created_at": "2023-02-13T17:00:57.000000Z",
-                  "updated_at": "2023-02-13T17:00:57.000000Z"
-              },
-              {
-                  "id": 2,
-                  "name": "The Alchemist",
-                  "file": "https://www.booksbeyond.co.id/image/cache/catalog/1632111032-550x550w.png.webp",
-                  "enable": true,
-                  "created_at": "2023-02-13T17:00:57.000000Z",
-                  "updated_at": "2023-02-13T17:00:57.000000Z"
-              }
-          ],
-          "first_page_url": "http://127.0.0.1:8000/api/images?page=1",
-          "from": 1,
-          "last_page": 1,
-          "last_page_url": "http://127.0.0.1:8000/api/images?page=1",
-          "links": [
-              {
-                  "url": null,
-                  "label": "&laquo; Previous",
-                  "active": false
-              },
-              {
-                  "url": "http://127.0.0.1:8000/api/images?page=1",
-                  "label": "1",
-                  "active": true
-              },
-              {
-                  "url": null,
-                  "label": "Next &raquo;",
-                  "active": false
-              }
-          ],
-          "next_page_url": null,
-          "path": "http://127.0.0.1:8000/api/images",
-          "per_page": 10,
-          "prev_page_url": null,
-          "to": 2,
-          "total": 2
+    {
+        "status": "success",
+        "data": {
+            "current_page": 1,
+            "data": [
+                {
+                    "id": 1,
+                    "name": "S23 Ultra",
+                    "file": "https://images.samsung.com/id/smartphones/galaxy-s23-ultra/buy/kv_online_exclusive_PC.jpg",
+                    "enable": true,
+                    "created_at": "2023-02-13T17:00:57.000000Z",
+                    "updated_at": "2023-02-13T17:00:57.000000Z"
+                },
+                {
+                    "id": 2,
+                    "name": "The Alchemist",
+                    "file": "https://www.booksbeyond.co.id/image/cache/catalog/1632111032-550x550w.png.webp",
+                    "enable": true,
+                    "created_at": "2023-02-13T17:00:57.000000Z",
+                    "updated_at": "2023-02-13T17:00:57.000000Z"
+                }
+            ],
+            "first_page_url": "http://127.0.0.1:8000/api/images?page=1",
+            "from": 1,
+            "last_page": 1,
+            "last_page_url": "http://127.0.0.1:8000/api/images?page=1",
+            "links": [
+                {
+                    "url": null,
+                    "label": "&laquo; Previous",
+                    "active": false
+                },
+                {
+                    "url": "http://127.0.0.1:8000/api/images?page=1",
+                    "label": "1",
+                    "active": true
+                },
+                {
+                    "url": null,
+                    "label": "Next &raquo;",
+                    "active": false
+                }
+            ],
+            "next_page_url": null,
+            "path": "http://127.0.0.1:8000/api/images",
+            "per_page": 10,
+            "prev_page_url": null,
+            "to": 2,
+            "total": 2
+        }
       }
-    }
     ```
 
     OR
