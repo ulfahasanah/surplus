@@ -483,6 +483,245 @@ Delete a category by id
     }
     ```
 
+# Category Product
+
+## **Show All Category Product**
+Show All Category Products
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/category_product/_
+
+* **Method**
+
+  `GET`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+      "status": "success",
+      "data": {
+          "current_page": 1,
+          "data": [
+              {
+                  "id": 2,
+                  "product_id": 2,
+                  "category_id": 2,
+                  "created_at": "2023-02-13T17:00:57.000000Z",
+                  "updated_at": "2023-02-13T17:00:57.000000Z",
+                  "category": {
+                      "id": 2,
+                      "name": "Book",
+                      "enable": true,
+                      "created_at": "2023-02-13T17:00:57.000000Z",
+                      "updated_at": "2023-02-13T17:00:57.000000Z"
+                  },
+                  "product": {
+                      "id": 2,
+                      "name": "The Alchemist",
+                      "description": "Paulo Coelho's masterpiece tells the mystical story of Santiago, an Andalusian shepherd boy who yearns to travel in search of a worldly treasure.",
+                      "created_at": "2023-02-13T17:00:57.000000Z",
+                      "updated_at": "2023-02-13T17:00:57.000000Z"
+                  }
+              }
+          ],
+          "first_page_url": "http://127.0.0.1:8000/api/category_product?page=1",
+          "from": 1,
+          "last_page": 1,
+          "last_page_url": "http://127.0.0.1:8000/api/category_product?page=1",
+          "links": [
+              {
+                  "url": null,
+                  "label": "&laquo; Previous",
+                  "active": false
+              },
+              {
+                  "url": "http://127.0.0.1:8000/api/category_product?page=1",
+                  "label": "1",
+                  "active": true
+              },
+              {
+                  "url": null,
+                  "label": "Next &raquo;",
+                  "active": false
+              }
+          ],
+          "next_page_url": null,
+          "path": "http://127.0.0.1:8000/api/category_product",
+          "per_page": 10,
+          "prev_page_url": null,
+          "to": 1,
+          "total": 1
+      }
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error"
+    }
+    ```
+ 
+
+## **Create a New Category Product**
+Add a new category Product
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/category_product/_
+
+* **Method**
+
+  `POST`
+
+* **Data Body**
+  **Required:**
+
+  `product_id=[integer]`
+  
+  `category_id=[integer]`
+
+* **Success Response:**
+  * **Code:** 201
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "product_id": 2,
+            "category_id": 1,
+            "updated_at": "2023-02-13T22:29:40.000000Z",
+            "created_at": "2023-02-13T22:29:40.000000Z",
+            "id": 7
+        },
+        "message": "Category Product created successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 500
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "The product id has already been taken."
+    }
+    ```
+
+## **Update Category Product by Id** 
+Edit a category product by id
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/category_product/:id_
+
+* **Method**
+
+    `PUT`
+
+* **URL Params**
+  **Required:**
+
+  `id:[integer]`
+
+* **Data Body**
+  **Required:**
+
+  `product_id=[integer]`
+
+  `category_id=[integer]`
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "id": 7,
+            "product_id": 2,
+            "category_id": 3,
+            "created_at": "2023-02-13T21:29:40.000000Z",
+            "updated_at": "2023-02-13T21:32:23.000000Z"
+        },
+        "message": "Category Product updated successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 422
+  * **Content:** 
+    ```javascript
+    {
+        "status": "error",
+        "message": "The product id field is required."
+    }
+    ```
+
+
+## **Delete category product by Id**
+Delete a category product by id 
+
+* **URL**
+
+  _http://127.0.0.1:8000/api/category_product/:id_
+
+* **Method**
+
+  `DELETE`
+
+* **URL Params**
+  **Required:**
+  
+  `id=[integer]`
+
+* **Data Body**
+
+  None
+
+* **Success Response:**
+  * **Code:** 200
+  * **Content:** 
+    ```javascript
+    {
+        "status": "success",
+        "data": {
+            "id": 7,
+            "product_id": 2,
+            "category_id": 3,
+            "created_at": "2023-02-14T21:29:40.000000Z",
+            "updated_at": "2023-02-14T21:32:23.000000Z"
+        },
+        "message": "Category Product deleted successfully"
+    }
+    ```
+
+    OR
+
+* **Error Response:**
+  * **Code:** 404
+  * **Content:** 
+    ```javascript
+    {
+      "status": "error" 
+    }
+    ```
+
 
 
 
