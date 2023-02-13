@@ -52,7 +52,19 @@ class ImageController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'file' => 'required',
+            'enable' => 'required'
+        ]);
+
+        $image->update($request->all());
+
+        return response()->json([
+            "status" => "success",
+            "data" => $image,
+            "message" => "Image updated successfully"
+        ]);
     }
 
     /**
